@@ -4,4 +4,4 @@ controllers:
 
 index:
     path: /
-    controller: App\Controller\PageAccueil::bonjour
+    controller: App\Controller\AccueilController::bonjour
