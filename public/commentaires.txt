@@ -1,0 +1,5 @@
+$commentaires = [
+            'Je ne serai pas disponible sur cette période (Gautier)',
+            'Je veux bien assurer la relève (Sophie)',
+            "Pensez à reporter l'heure manquante (Mélanie)",
+        ];
