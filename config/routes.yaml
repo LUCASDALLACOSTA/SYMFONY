@@ -1,7 +1,6 @@
-controllers:
-    resource: ../src/Controller/
-    type: attribute
-
 index:
     path: /
-    controller: App\Controller\AccueilController::bonjour
+    controller: App\Controller\AccueilController::Accueil
+connexion:
+    path: /connexion
+    controller: App\Controller\Connexion::connexion
