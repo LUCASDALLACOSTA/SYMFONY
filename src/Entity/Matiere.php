@@ -22,6 +22,9 @@ class Matiere
     #[ORM\ManyToOne(inversedBy: 'matieres')]
     private ?Intervenant $fk_intervenant = null;
 
+    #[ORM\Column(length: 50, nullable: true)]
+    private ?string $specialite = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +62,18 @@ class Matiere
     public function setFkIntervenant(?Intervenant $fk_intervenant): self
     {
         $this->fk_intervenant = $fk_intervenant;
+
+        return $this;
+    }
+
+    public function getSpecialite(): ?string
+    {
+        return $this->specialite;
+    }
+
+    public function setSpecialite(?string $specialite): self
+    {
+        $this->specialite = $specialite;
 
         return $this;
     }

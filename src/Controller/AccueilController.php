@@ -8,11 +8,26 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AccueilController extends AbstractController
 {
-
-    function Accueil()
-    {
-        return $this->render('pages/accueil.html.twig', [
-            'page_title' => 'Accueil',
+    /**
+     * @Route("/")
+     */
+    function bonjour() {
+        return $this->render('accueil.html.twig',[
         ]);
+    }
+
+    /**
+     * @Route("/produits/{var}")
+     */
+    function afficheCreneau($var){
+        $commentaires = [
+            'Je ne serai pas disponible sur cette période (Gautier)',
+            'test 2',
+            "test'test",
+        ];
+        return $this->render('creneau/affiche.html.twig', [
+            'title'=>ucwords(str_replace('-',' ',$var)),
+            'commentaires'=>$commentaires,
+            ]);
     }
 }

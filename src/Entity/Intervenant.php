@@ -18,20 +18,17 @@ class Intervenant
     #[ORM\Column(length: 50)]
     private ?string $nom = null;
 
-    #[ORM\Column(length: 50)]
-    private ?string $prenom = null;
-
-    #[ORM\Column(length: 50)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $specialiteprofessionnelle = null;
-
-    #[ORM\Column(length: 100)]
-    private ?string $email = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $mdp = null;
 
     #[ORM\OneToMany(mappedBy: 'fk_intervenant', targetEntity: Matiere::class)]
     private Collection $matieres;
+
+    #[ORM\Column(length: 255)]
+    private ?string $prenom = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $email = null;
 
     public function __construct()
     {
@@ -55,50 +52,14 @@ class Intervenant
         return $this;
     }
 
-    public function getPrenom(): ?string
-    {
-        return $this->prenom;
-    }
-
-    public function setPrenom(string $prenom): self
-    {
-        $this->prenom = $prenom;
-
-        return $this;
-    }
-
     public function getSpecialiteprofessionnelle(): ?string
     {
         return $this->specialiteprofessionnelle;
     }
 
-    public function setSpecialiteprofessionnelle(string $specialiteprofessionnelle): self
+    public function setSpecialiteprofessionnelle(?string $specialiteprofessionnelle): self
     {
         $this->specialiteprofessionnelle = $specialiteprofessionnelle;
-
-        return $this;
-    }
-
-    public function getEmail(): ?string
-    {
-        return $this->email;
-    }
-
-    public function setEmail(string $email): self
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    public function getMdp(): ?string
-    {
-        return $this->mdp;
-    }
-
-    public function setMdp(string $mdp): self
-    {
-        $this->mdp = password_hash($mdp, PASSWORD_DEFAULT); //hashage du mot de passe
 
         return $this;
     }
@@ -131,5 +92,34 @@ class Intervenant
         }
 
         return $this;
+    }
+
+    public function getPrenom(): ?string
+    {
+        return $this->prenom;
+    }
+
+    public function setPrenom(string $prenom): self
+    {
+        $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->prenom . ' ' . $this->nom;
     }
 }
