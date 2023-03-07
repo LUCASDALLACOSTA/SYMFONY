@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{%  block title %}gestion intervenants{% endblock %}
+
+{% block body %}
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; }
+        .example-wrapper { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+
+    <div class="example-wrapper">
+        <h1>Liste des intervenants</h1>
+
+        <table>
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Spécialité professionnelle</th>
+                <th>email</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for intervenant in intervenants %}
+                <tr>
+                    <td>{{ intervenant.nom }}</td>
+                    <td>{{ intervenant.prenom }}</td>
+                    <td>{{ intervenant.specialiteprofessionnelle }}</td>
+                    <td>{{ intervenant.email }}</td>
+                    <td><a href="{{ path('intervenant_modifier', {'id': intervenant.getId()}) }}">Modifier</a></td>
+                    <td><a href="{{ path('intervenant_supprimer', {'id': intervenant.getId()}) }}">Supprimer</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{%  endblock %}

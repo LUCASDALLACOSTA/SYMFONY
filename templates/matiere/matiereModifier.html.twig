@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier une matière{% endblock %}
+
+{% block body %}
+    <h1>Modifier une matière</h1>
+
+    {{ form_start(form) }}
+
+    {{ form_row(form.intitule) }}
+    {{ form_row(form.duree) }}
+    {{ form_row(form.specialite) }}
+    {{ form_row(form.fk_intervenant) }}
+
+    <button type="submit">Modifier</button>
+
+    {{ form_end(form) }}
+{% endblock %}

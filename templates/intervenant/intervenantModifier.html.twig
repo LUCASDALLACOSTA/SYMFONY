@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier un intervenant{% endblock %}
+
+{% block body %}
+    <h1>Modifier un intervenant</h1>
+
+    {{ form_start(intervenantForm) }}
+
+    {{ form_row(intervenantForm.nom) }}
+    {{ form_row(intervenantForm.prenom) }}
+    {{ form_row(intervenantForm.specialiteprofessionnelle) }}
+    {{ form_row(intervenantForm.email) }}
+
+    <button type="submit">Modifier</button>
+
+    {{ form_end(intervenantForm) }}
+{% endblock %}

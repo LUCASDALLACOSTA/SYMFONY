@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste de mes matières{% endblock %}
+
+{% block body %}
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; }
+        .example-wrapper { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+    <div class="example-wrapper">
+        <h1>Liste de mes matières</h1>
+        <ul>
+            {% for matiere in matieres %}
+                <li>{{ matiere.intitule }} ' {{ matiere.specialite }}- {{ matiere.duree }} heures</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

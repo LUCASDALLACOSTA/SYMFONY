@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}gestion des matières{% endblock %}
+
+{% block body %}
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+
+    <div class="example-wrapper">
+        <h1>gestion des matières</h1>
+
+        <h2>{{ sous_titre }}</h2>
+
+        <ul>
+            {% for m in matiere_liste %}
+                <li><strong>{{ m.getIntitule() }}</strong>
+                    {{ m.getDuree() }} heures
+                    {{ m.getSpecialite() }}
+                    {% if m.getFkIntervenant() is not null %}
+                        {{ m.getFkIntervenant().getPrenom() }}
+                    {% endif %}
+                    {% if m.getFkIntervenant() is not null %}
+                        {{ m.getFkIntervenant().getNom() }}
+                    {% endif %}
+                    <a href="{{ path('matiere_modifier', {'id': m.getId()}) }}">Modifier</a>
+                    <a href="{{ path('matiere_supprimer', {'id': m.getId()}) }}">Supprimer</a>
+                </li>
+
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
