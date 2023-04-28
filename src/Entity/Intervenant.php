@@ -122,4 +122,9 @@ class Intervenant
     {
         return $this->prenom . ' ' . $this->nom;
     }
+    public function nomComplet(): string
+    {
+        return $this->prenom . ' ' . $this->nom;
+    }
+
 }

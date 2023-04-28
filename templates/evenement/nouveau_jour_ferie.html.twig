@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <h1>Nouveau jour férié</h1>
+        {{ form_start(form) }}
+        {{ form_row(form.debut, {'label': 'Jour férié'}) }}
+        {{ form_row(form.submit, {'label': 'Créer'}) }}
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

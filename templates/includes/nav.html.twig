@@ -1,43 +1,45 @@
 <ul class="navbar-nav mr-auto">
     {% if app.user %}
         <li class="nav-item">
-            <a style="color: #fff;margin-top: 20px;" class="nav-link" href="#">Mon planning</a>
+            <a style="color: #fff;margin-top: 20px;" class="nav-link" href="/calendar">Calendrier</a>
         </li>
         <li class="nav-item"><a style="..." class="nav-link" href="/logout">Déconnexion ({{ app.user.prenom }})</a></li>
         {% if is_granted('ROLE_ADMIN') %}
             <!-- DEBUT nav barre création intervenants -->
             <li class="nav-item dropdown" style="margin-right: 75px;margin-top: 15px;">
-                <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <p>Intervenant</p>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="../intervenant/create">Créer un intervenant</a>
-                    <a class="dropdown-item" href="../intervenant/liste">Liste des intervenants</a>
+                    <a class="dropdown-item" href="/intervenant/create">Créer un intervenant</a>
+                    <a class="dropdown-item" href="/intervenant/liste">Liste des intervenants</a>
+                    <a class="dropdown-item" href="/disponibilite/liste">Voir les disponibilités</a>
                 </div>
             </li>
             <!-- FIN nav barre création intervenants -->
             <li class="nav-item dropdown" style="margin-right: 75px;margin-top: 15px;">
-                <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <p>Matieres</p>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="../matiere/create">Créer une matière</a>
-                    <a class="dropdown-item" href="../matiere/liste">Liste des matières</a>
+                    <a class="dropdown-item" href="/matiere/create">Créer une matière</a>
+                    <a class="dropdown-item" href="/matiere/liste">Liste des matières</a>
                 </div>
             </li>
         {% endif %}
         {% if is_granted('ROLE_INTERVENANT') %}
-            <!-- DEBUT nav barre création intervenants -->
+            <!-- DEBUT nav barre intervenant -->
             <li class="nav-item dropdown" style="margin-right: 75px;margin-top: 15px;">
-                <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <p>Intervenant</p>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="./intervenant/dashboard">Dashboard</a>
-                    <a class="dropdown-item" href="./intervenant/matieres/liste">Liste de mes matières</a>
+                    <a class="dropdown-item" href="/intervenant/dashboard">Dashboard</a>
+                    <a class="dropdown-item" href="/intervenant/matieres/liste">Liste de mes matières</a>
+                    <a class="dropdown-item" href="/disponibilite/liste">Gérer mes disponibilités</a>
                 </div>
             </li>
-            <!-- FIN nav barre création intervenants -->
+            <!-- FIN nav barre intervenant -->
         {% endif %}
     {% else %}
         <li class="nav-item">

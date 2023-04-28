@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{%  block title %}gestion disponibilité{% endblock %}
+
+{% block body %}
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; }
+        .example-wrapper { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+
+    <div class="example-wrapper">
+        {% if is_granted('ROLE_ADMIN') %}
+            <h1>Liste des disponiblités</h1>
+            <table>
+                <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Début</th>
+                    <th>Fin</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for evenement in evenements %}
+                <tr>
+                    <td>{{ evenement.titre }} {{ evenement.FkIntervenant.prenom }} {{ evenement.FkIntervenant.nom }}</td>
+                    <td>{{ evenement.debut|date('d-m-Y H:i') }}</td>
+                    <td>{{ evenement.fin|date('d-m-Y H:i') }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+
+        {% if is_granted('ROLE_INTERVENANT') %}
+            <h1>Liste de mes disponiblités</h1>
+            <div class="text-center mt-3">
+                <a href="{{ path('nouvelle_disponibilite') }}" class="btn btn-primary">Créer une disponibilité</a>
+            </div>
+            <table>
+                <thead>
+                <tr>
+                    <th>Début</th>
+                    <th>Fin</th>
+                    <th>Supprimer</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for evenement in evenements %}
+                {% if evenement.FkIntervenant.email == app.user.email %}
+                <tr>
+                    <td>{{ evenement.debut|date('d-m-Y H:i') }}</td>
+                    <td>{{ evenement.fin|date('d-m-Y H:i') }}</td>
+                    <td><a href="{{ path('disponibilite_supprimer', {'id': evenement.getId()}) }}">Supprimer</a></td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    </div>
+{%  endblock %}

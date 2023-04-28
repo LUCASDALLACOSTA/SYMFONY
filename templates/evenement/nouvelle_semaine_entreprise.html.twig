@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <h1>Nouvelle semaine d'entreprise</h1>
+        {{ form_start(form) }}
+        {{ form_row(form.debut) }}
+        {{ form_row(form.fin) }}
+        {{ form_row(form.submit, {'label': 'Créer'}) }}
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
